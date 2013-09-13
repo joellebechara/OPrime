@@ -67,8 +67,12 @@ public class HTML5GameActivity extends HTML5Activity {
 
   protected void checkIfNeedToPrepareExperiment(
       boolean activtySaysToPrepareExperiment) {
-    boolean prepareExperiment = getIntent().getExtras().getBoolean(
-        OPrime.EXTRA_PLEASE_PREPARE_EXPERIMENT, false);
+	boolean prepareExperiment = false;
+	try{
+	  prepareExperiment = getIntent().getExtras().getBoolean(OPrime.EXTRA_PLEASE_PREPARE_EXPERIMENT, false);
+    }catch(Exception e){
+	  return;
+	}
     if (prepareExperiment || activtySaysToPrepareExperiment) {
       if (D) {
         Log.d(TAG, "HTML5GameActivity was asked to prepare the experiment.");
